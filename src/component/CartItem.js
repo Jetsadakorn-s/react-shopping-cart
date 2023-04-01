@@ -4,7 +4,7 @@ import deleteicon from '../image/delete-icn.svg'
 import { MyCartContext } from '../management/context'
 
 const CartItem = ({id,name,image_url,price,quantity}) => {
-    const {removeItem,toggleQuantity} = MyCartContext()
+    const {removeItem,toggleQuantity,formatNumber} = MyCartContext()
     return(
         <div className="item">
             <div className="product-img">
@@ -12,7 +12,7 @@ const CartItem = ({id,name,image_url,price,quantity}) => {
             </div>
             <div className="description">
                 <span>{name}</span>
-                <span>{price}</span>
+                <span> ราคา {formatNumber(price)} บาท</span>
             </div>
             <div className="quantity">
                 <button className='plus-btn' onClick={()=>toggleQuantity(id, "increment")}>
@@ -24,7 +24,7 @@ const CartItem = ({id,name,image_url,price,quantity}) => {
                 </button>
             </div>
             <div className='total-price'>
-                {quantity*price}
+                {formatNumber(quantity*price)}
             </div>
             <div className='remove' onClick={()=>removeItem(id)}>
                 <img src={deleteicon} alt=''/> 

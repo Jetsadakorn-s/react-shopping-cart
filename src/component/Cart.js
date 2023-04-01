@@ -3,7 +3,7 @@ import CartData from "../ShoppingCart/data/CartData"
 import CartItem from "./CartItem"
 
 const Cart = () => {
-    const {cart,total} = MyCartContext()
+    const {cart,total,formatNumber} = MyCartContext()
     if(cart.length === 0){
         return(
             <div className="shopping-cart">
@@ -17,7 +17,7 @@ const Cart = () => {
                 {cart.map((data)=>{
                     return<CartItem key={data.id} {...data}/>
                 })}
-                <div className="footer">ยอดรวม {total}</div>
+                <div className="footer">ยอดรวม {formatNumber(total)}</div>
             </div>
         )
     }
